@@ -5,15 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Tiny5&display=swap"
+rel="stylesheet">
 </head>
 <body>
-    <button class="pla">PLAY</button>
-    <div class="game" id="game">
-        <div class="piple" id="piple"></div>
-        <div class="dino dino-move" id="dino1"></div>
-        <div class="dino2" id="dino2"></div>
+    <div class="container-play">
+        <button class="play" onclick="play()">PLAY</button>
     </div>
-    <div class="grass"></div>
+    <div class="container-game">
+        <div class="game" id="game">
+            <div class="piple-idle" id="piple"></div>
+            <div class="dino" id="dino1"></div>
+            <div class="dino2" id="dino2"></div>
+        </div>
+        <div class="grass"></div>
+        <div class="count-box">
+            <code class="count">Current count : <code class="count" id="current-count">0</code></code><br>
+            <code class="count">Record count : <code class="count" id="record-count">0</code></code>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
