@@ -4,9 +4,10 @@ const dino2 = document.getElementById('dino2')
 const game = document.querySelector('game')
 const current_count = document.getElementById('current-count')
 const record_count = document.getElementById('record-count')
-const record_count_num = Number(localStorage.getItem('record_count_num'))
+let record_count_num = localStorage.getItem('record_count_num')
 record_count_num ??= 0
 record_count.textContent = record_count_num
+record_count_num = Number(record_count_num)
 let count_num = 0
 let keydown = false
 let isJumping = false
@@ -104,6 +105,10 @@ let isAlive = setInterval(() => {
         if(count_num > record_count_num){
             alert(`New record: ${count_num}`)
             localStorage.setItem('record_count_num', count_num)
+            alert('game over')
+            window.location.reload()
+        }
+        else {
             alert('game over')
             window.location.reload()
         }
