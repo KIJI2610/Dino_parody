@@ -4,12 +4,16 @@ const dino2 = document.getElementById('dino2')
 const game = document.querySelector('game')
 const current_count = document.getElementById('current-count')
 const record_count = document.getElementById('record-count')
+const record_count_num = Number(localStorage.getItem('record_count_num'))
+record_count_num ??= 0
+record_count.textContent = record_count_num
 let count_num = 0
 let keydown = false
 let isJumping = false
 let play_run = false
 let fast_down_prevent = false
 
+// Прибавление очков
 setInterval(() => {
     if(play_run){
         count_num++
@@ -91,14 +95,18 @@ document.addEventListener('keyup', e => {
 
 
 // Для соприкосновения с динозаврами и смерти
-// let isAlive = setInterval(() => {
-//     let piple_top = parseInt(window.getComputedStyle(piple).getPropertyValue('top'))
-//     let dino1_left = parseInt(window.getComputedStyle(dino1).getPropertyValue('left'))
-//     let dino2_left = parseInt(window.getComputedStyle(dino2).getPropertyValue('left'))
+let isAlive = setInterval(() => {
+    let piple_top = parseInt(window.getComputedStyle(piple).getPropertyValue('top'))
+    let dino1_left = parseInt(window.getComputedStyle(dino1).getPropertyValue('left'))
+    let dino2_left = parseInt(window.getComputedStyle(dino2).getPropertyValue('left'))
 
-//     if(dino1_left < 250 && dino1_left > 200 && piple_top >= 415 || dino2_left < 250 && dino2_left > 200 && piple_top >= 415){
-//         alert('game over')
-//         window.location.reload()
-//     }
-// },10)
+    if(dino1_left < 250 && dino1_left > 200 && piple_top >= 415 || dino2_left < 250 && dino2_left > 200 && piple_top >= 415){
+        if(count_num > record_count_num){
+            alert(`New record: ${count_num}`)
+            localStorage.setItem('record_count_num', count_num)
+            alert('game over')
+            window.location.reload()
+        }
+    }
+},10)
 
